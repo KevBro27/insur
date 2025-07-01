@@ -1,0 +1,294 @@
+/* --- The Gold Standard Design System --- */
+:root {
+    --primary-color: #0A2240; /* Navy Blue */
+    --accent-color: #D4AF37;  /* Warm Gold */
+    --text-color: #333333;   /* Dark Gray */
+    --light-text-color: #FFFFFF; /* White */
+    --bg-color: #FFFFFF;     /* White Background */
+    --light-gray-bg: #f8f9fa; /* Light Gray for alternating sections */
+
+    --font-heading: 'Lora', serif;
+    --font-body: 'Open Sans', sans-serif;
+}
+
+/* --- Global & Reset Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+section {
+    padding: 80px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* --- Utility Classes --- */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 15px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #c5a031;
+    transform: translateY(-2px);
+}
+
+.dark-section {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+}
+
+.dark-section h2 {
+    color: var(--light-text-color);
+}
+
+.hidden {
+    display: none;
+}
+
+/* --- Hero Section --- */
+.hero {
+    background-image: linear-gradient(rgba(10, 34, 64, 0.7), rgba(10, 34, 64, 0.7)), url('https://images.unsplash.com/photo-1507722835196-8804a5f74558?q=80&w=2070&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    color: var(--light-text-color);
+    height: 85vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    color: var(--light-text-color);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 650px;
+    margin: 0 auto 2rem auto;
+}
+
+/* --- Sections --- */
+#intro p, #features p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#features, #final-cta {
+    background-color: var(--light-gray-bg);
+}
+
+/* --- Features Grid --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+    text-align: left;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    background-color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image {
+    flex-shrink: 0;
+}
+
+.profile-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 7px solid var(--accent-color);
+}
+
+/* --- Form Section --- */
+.form-container {
+    max-width: 550px;
+    margin: 40px auto 0;
+    padding: 40px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+/* --- Thank You Page Specific Styles --- */
+.centered-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    text-align: center;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    section { padding: 60px 0; }
+    
+    .hero { height: 70vh; }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* --- Styles for Checklist Page --- */
+.checklist-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.checklist-body {
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: left;
+}
+.checklist-body h3 {
+    margin-top: 2.5rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+.checklist-body ul {
+    list-style: none;
+    padding-left: 0;
+}
+.checklist-body li {
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+.subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: -1rem;
+    font-family: var(--font-body);
+    font-style: italic;
+}
+.checklist-cta {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    padding: 60px 0;
+}
+.checklist-cta h2, .checklist-cta p {
+    color: var(--light-text-color);
+}
