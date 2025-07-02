@@ -107,7 +107,8 @@ section {
 
 /* --- Hero Section --- */
 .hero {
-    background-image: linear-gradient(rgba(10, 34, 64, 0.7), rgba(10, 34, 64, 0.7)), url('https://images.unsplash.com/photo-1507722835196-8804a5f74558?q=80&w=2070&auto=format&fit=crop');
+    /* Background Image UPDATED to local file */
+    background-image: linear-gradient(rgba(10, 34, 64, 0.7), rgba(10, 34, 64, 0.7)), url('hero-image.jpg');
     background-size: cover;
     background-position: center;
     color: var(--light-text-color);
