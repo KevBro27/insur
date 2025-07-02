@@ -67,7 +67,7 @@
             </div>
         </section>
 
-        <!-- About Section (WITH FINAL TEXT) -->
+        <!-- About Section -->
         <section id="about" class="dark-section">
             <div class="container">
                 <div class="about-content">
@@ -111,6 +111,37 @@
         </section>
     </main>
 
+    <!-- =================================== -->
+    <!-- DIGITAL ASSISTANT (CHATBOT) WIDGET -->
+    <!-- =================================== -->
+    <div id="chat-trigger" class="chat-trigger">
+        <!-- THIS ICON HAS BEEN CHANGED TO A QUESTION MARK -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-help-circle"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+    </div>
+
+    <div id="chat-widget" class="chat-widget">
+        <div class="chat-header">
+            <h3>Digital Assistant</h3>
+            <button id="close-chat" class="close-chat">&times;</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+            <div id="chat-log" class="chat-log">
+                <!-- Initial Assistant Message -->
+                <div class="chat-message assistant">
+                    Hello! I'm the digital assistant for Kevin Brown Jr. Do you have any quick questions about final expense planning?
+                </div>
+                <!-- Initial Quick Replies -->
+                <div class="quick-replies" id="initial-replies">
+                    <button class="quick-reply" data-action="what-is">What is Final Expense Insurance?</button>
+                    <button class="quick-reply" data-action="book-call">How do I book a free call?</button>
+                    <button class="quick-reply" data-action="get-checklist">I'd like the free checklist.</button>
+                    <button class="quick-reply" data-action="other-question">I have another question.</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END OF CHATBOT WIDGET -->
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -118,5 +149,76 @@
         </div>
     </footer>
 
+    <!-- =================================== -->
+    <!-- JAVASCRIPT FOR CHATBOT -->
+    <!-- =================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatTrigger = document.getElementById('chat-trigger');
+            const chatWidget = document.getElementById('chat-widget');
+            const closeChat = document.getElementById('close-chat');
+            const chatLog = document.getElementById('chat-log');
+            const initialReplies = document.getElementById('initial-replies');
+
+            // --- Toggle Chat Widget ---
+            chatTrigger.addEventListener('click', () => {
+                chatWidget.classList.toggle('show');
+                chatTrigger.classList.toggle('hide');
+            });
+
+            closeChat.addEventListener('click', () => {
+                chatWidget.classList.remove('show');
+                chatTrigger.classList.remove('hide');
+            });
+
+            // --- Handle Quick Replies ---
+            initialReplies.addEventListener('click', (e) => {
+                if (e.target.classList.contains('quick-reply')) {
+                    const action = e.target.dataset.action;
+                    const userMessage = e.target.textContent;
+
+                    // Add user's choice to chat log
+                    addMessageToLog(userMessage, 'user');
+
+                    // Remove quick replies
+                    initialReplies.style.display = 'none';
+
+                    // Provide assistant's response after a short delay
+                    setTimeout(() => {
+                        handleAssistantResponse(action);
+                    }, 500);
+                }
+            });
+
+            // --- Assistant Response Logic ---
+            function handleAssistantResponse(action) {
+                let responseText = '';
+                switch (action) {
+                    case 'what-is':
+                        responseText = "Final Expense Insurance is a type of whole life policy designed to cover end-of-life costs, like medical bills and funeral expenses. It ensures your family isn't left with a financial burden.";
+                        break;
+                    case 'book-call':
+                        responseText = `Of course! You can schedule a free, no-obligation 15-minute call directly on Kevin's calendar. <a href="https://calendly.com/kevin-kevinbrownjrinsurance/30min" target="_blank">Click here to book now.</a>`;
+                        break;
+                    case 'get-checklist':
+                        responseText = `You can download the free "Protect Your Legacy" checklist right here: <a href="Final-Expense-Checklist.pdf" download>Download the checklist.</a>`;
+                        break;
+                    case 'other-question':
+                        responseText = "For any other questions, the best way to get a clear answer is a quick chat with Kevin. He can provide personalized information with no pressure. Feel free to book a call!";
+                        break;
+                }
+                addMessageToLog(responseText, 'assistant');
+            }
+            
+            // --- Helper function to add messages to the log ---
+            function addMessageToLog(message, sender) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('chat-message', sender);
+                messageElement.innerHTML = message; // Use innerHTML to allow for links
+                chatLog.appendChild(messageElement);
+                chatLog.scrollTop = chatLog.scrollHeight; // Auto-scroll to the bottom
+            }
+        });
+    </script>
 </body>
 </html>
